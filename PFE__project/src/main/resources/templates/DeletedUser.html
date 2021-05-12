@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gestion User</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+                      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+                      crossorigin="anonymous">
+</head>
+<body>
+ <div class="container">
+          
+         <nav class="navbar navbar-inverse">
+             <ul class="nav navbar-nav">
+                  <li class="nav-item">
+                     <a class="nav-link" href="GestionUser">Gestion User </a>
+                 </li>
+                 
+                 <li class="nav-item">
+                     <a class="nav-link" href="registration"> Registration </a>
+                 </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href=""> Gestion newsletter  </a>
+                 </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href=""> Exportation </a>
+                 </li>
+             </ul>
+         </nav>
+     </div>
+     <div class="container">
+      <table class="table table-hover">      
+           <h4>Deleted users:</h4>
+               <tr>
+                 <th>First Name</th> 
+                 <th>Last Name</th> 
+                 <th>Email</th> 
+                 <th>Phone number</th> 
+                 <th>Birthday date</th> 
+                 <th>Adress</th> 
+                 <th>Profil</th>   
+                 <th>Gender</th>   
+                 <th>Restore</th>                
+  </tr>
+
+  <tr th:each="user: ${userRegistration}">
+    <td th:text="${user.nom_user_fr}"></td>
+    <td th:text="${user.prenom_user_fr}"></td>
+    <td th:text="${user.email1_user}"></td>
+    <td th:text="${user.tel1_user}"></td>
+    <td th:text="${user.date_naiss_user}"></td>
+    <td th:text="${user.adr_user}"></td>
+    <td th:text="${user.profil}"></td>
+    <td th:text="${user.gender}"></td>
+   
+    
+</table>
+
+</div>
+ 
+</body>
+</html>

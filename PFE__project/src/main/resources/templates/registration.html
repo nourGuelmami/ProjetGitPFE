@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>registration</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+                      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+                      crossorigin="anonymous">
+
+</head>
+<body>
+     <div class="container">
+          
+         <nav class="navbar navbar-inverse">
+             <ul class="nav navbar-nav">
+                 <li class="nav-item">
+                     <a class="nav-link" href="GestionUser">Gestion User </a>
+                 </li>
+                 
+                 <li class="nav-item">
+                     <a class="nav-link" href="registration"> Registration </a>
+                 </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href="/gestionNewsletter"> Newsletter  </a>
+                 </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href=""> Exportation </a>
+                 </li>
+             </ul>
+         </nav>
+     </div>
+
+      
+      
+      <!-- registration form -->
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-6 col-md-offset-3">
+                      <div th:if="${param.success}">
+                          <div class="alert alert-info">You've successfully registred !!</div>
+                      </div>
+                               <h1>Registration</h1>
+                      <form th:action="@{/registration}" method="post" th:object="${user}" >
+                        <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> first name: </label>
+                             <input type="text" class="control-label" th:field="*{nom_user_fr}" required autofocus="autofocus" /><br>
+                         </div>
+                         <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> last name: </label>
+                             <input type="text" class="control-label" th:field="*{prenom_user_fr}" required autofocus="autofocus" /><br>
+                         </div>
+                         <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> email: </label>
+                             <input type="email" class="control-label" th:field="*{email1_user}" required autofocus="autofocus" /><br>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                          <label class="control-label"> username: </label>
+                             <input type="text" class="control-label" th:field="*{username}" required autofocus="autofocus" /><br>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                          <label class="control-label"> password: </label>
+                             <input type="password" class="control-label"  th:field="*{pwd_user}" th:errorClass="is-invalid" required autofocus="autofocus"/><br> 
+                             <div th:if="${#fields.hasErrors('pwd_user')}" th:errors="*{pwd_user}" class="invalid-feedback" ></div>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> phone number: </label>
+                             <input type="text" class="control-label" th:field="*{tel1_user}" required autofocus="autofocus" /><br>
+                         </div>
+
+                         <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> birthday date: </label>
+                             <input type="date" class="control-label" th:field="*{date_naiss_user}" required autofocus="autofocus" /><br>
+                         </div>
+
+                         <div class="form-group">
+                          <label class="control-label" for="nom_user_fr"> adress: </label>
+                             <input type="text" class="control-label" th:field="*{adr_user}" required autofocus="autofocus" /><br>
+                         
+                         </div>
+                         
+                         <div class="form-group">
+                            <label class="control-label" for="gender"> Gender: </label>
+                                <div class="col-8">
+                                 <div th:each="gender :${listGenders}">
+                                  <input type="checkbox" th:field="*{gender}"
+                                      th:value="${gender.id_genre_user}" 
+                                      th:text="${gender.lib_genre_user_fr}" class="m-2"/>
+                                 </div>
+                                </div>
+                         </div>
+                         
+                         
+                         
+                         
+                         
+                          <div class="form-group">
+                            <label class="control-label" for="nwesletter">Receive newsletter </label>                               
+                                <div class="col-8">
+                                 <div th:each="newsletter :${listNewsletter}">
+                                  <input type="checkbox" th:field="*{newsletters}"
+                                      th:value="${newsletter.id_newsletter}" 
+                                      th:text="${newsletter.sujet_newsletter}" class="m-2"/>
+                                 </div>
+                                </div>
+                         </div>
+                         
+                         
+                         
+                         <div class="form-group">
+                          <button type="submit" class="btn btn-success">Register</button><br>
+                          <span>Already registered? <a href="/login"> Login here</a></span>
+                         </div>
+                              
+                        </form>
+                      
+                 </div>
+             </div>
+         </div>
+
+    
+
+ <div class="text-center">
+  <h5> Copyright &copy; GIA ltd. </h5>
+</div>
+
+</body>
+</html>
